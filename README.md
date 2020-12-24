@@ -1,16 +1,24 @@
-# wave
+# Wave
 
-A wavy app
+A Flutter app that shows a random quote from Kanye West 🌊
 
-## Getting Started
+<center>
+  <div>
+     <img src="/screenshots/quote-screenshot-iphone.png" width="400px"</img> 
+  </div>
+</center>
 
-This project is a starting point for a Flutter application.
+## How to use
+- Tap 🌊 to fetch a new quote
+- Long-press on the quote to copy (and share with the world!)
+  
+## Attribution
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Rest API**: https://kanye.rest – "A free REST API for random Kanye West quotes (Kanye as a Service)"
+- **State managemets/Architecture** – [provider](https://pub.dev/packages/provider)
+- **Dependency injection (service locator)** – [get_it](https://pub.dev/packages/get_it)
+- **Networking** – [http](https://pub.dev/packages/http)
+- **Font** – [Knewave](https://fonts.google.com/specimen/Knewave) on Google Fonts (and [google_fonts](https://pub.dev/packages/google_fonts) library for using it)
+- **Toast (pop-up message)** – [fluttertoast](https://pub.dev/packages/fluttertoast)
+- **Launcher icon generator** – [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)
+- **Launcher icon image** – [Bia Andrade (justbia) on Unsplash](https://unsplash.com/photos/inUID_-1lCU)
