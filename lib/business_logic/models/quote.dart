@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
+
+@immutable
 class Quote {
-  String text;
+  final String text;
 
   Quote({this.text});
 

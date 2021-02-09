@@ -1,17 +1,17 @@
 import 'package:wave/business_logic/models/quote.dart';
-import 'package:wave/business_logic/services/api/Api.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class QuotesApi implements Api {
-  @override
+class QuotesService {
+  static const String _base_url = 'https://api.kanye.rest';
+
   Future<Quote> fetchRandomQuote() async {
-    final response = await http.get('https://api.kanye.rest');
+    final response = await http.get(_base_url);
 
     if (response.statusCode == 200) {
       return Quote.fromJson(jsonDecode(response.body));
     } else {
-      throw Exception('Failed to load a quote');
+      return null;
     }
   }
 }
