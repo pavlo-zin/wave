@@ -19,3 +19,4 @@ A Flutter app that shows a random quote from Kanye West 🌊
 - **Font** – [Caveat](https://fonts.google.com/specimen/Caveat) on Google Fonts (and [google_fonts](https://pub.dev/packages/google_fonts) library for using it)
 - **Launcher icon generator** – [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)
 - **Launcher icon image** – [Bia Andrade (justbia) on Unsplash](https://unsplash.com/photos/inUID_-1lCU)
+- **Screenshot asset** created with [MockUPhone](https://mockuphone.com)
