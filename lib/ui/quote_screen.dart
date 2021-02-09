@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+import 'package:share/share.dart';
 import 'package:wave/business_logic/view_models/quote_provider.dart';
 import 'package:wave/ui/common/text_style.dart';
 
@@ -16,71 +15,61 @@ class _QuoteScreenState extends State<QuoteScreen> {
   void initState() {
     super.initState();
     final quoteProvider = context.read<QuoteProvider>();
-    WidgetsBinding.instance.addPostFrameCallback((_) => quoteProvider.fetchQuote());
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => quoteProvider.fetchQuote());
   }
 
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<QuoteProvider>();
 
-    if (provider.state == QuoteViewState.loading) {
-      return Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    } else if (provider.state == QuoteViewState.success) {
-      return buildQuoteView(provider);
-    } else {
-      return Scaffold(
-        body: Center(
-          child: Text("Error occurred when retrieving the quote"),
-        ),
-      );
-    }
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black87),
+        title: Text("Kanye wisdom", style: titleStyle),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.share),
+            tooltip: 'Share quote',
+            onPressed: () => _handleOnShare(provider.quote.text),
+          ),
+        ],
+      ),
+      body: provider.state == QuoteViewState.loading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : _buildQuoteView(provider),
+    );
   }
 
-  Widget buildQuoteView(QuoteProvider provider) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () => provider.fetchQuote(),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "🌊",
-                  style: waveStyle,
-                ),
-              ),
+  Widget _buildQuoteView(QuoteProvider provider) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextButton(
+              child: Text("🌊", style: waveStyle),
+              onPressed: () => provider.fetchQuote(),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: GestureDetector(
-                onLongPress: () => _handleQuoteCopy(provider.quote.text),
-                child: Text(
-                  provider.quote.text,
-                  textAlign: TextAlign.center,
-                  style: quoteStyle,
-                ),
-              ),
-            )
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18),
+            child: Text(
+              provider.quote.text,
+              textAlign: TextAlign.center,
+              style: quoteStyle,
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  void _handleQuoteCopy(String text) {
-    Clipboard.setData(ClipboardData(text: text));
-    HapticFeedback.lightImpact();
-    Fluttertoast.showToast(
-        msg: "Copied 😉",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.TOP,
-        backgroundColor: Colors.blue[50],
-        textColor: Colors.black87);
+  void _handleOnShare(String text) {
+    Share.share(text, subject: 'Check out this quote!');
   }
 }
