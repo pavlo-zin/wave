@@ -26,6 +26,7 @@ class _QuoteScreenState extends State<QuoteScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
         title: Text("Kanye wisdom", style: titleStyle),
         actions: <Widget>[
@@ -49,12 +50,12 @@ class _QuoteScreenState extends State<QuoteScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextButton(
-              child: Text("🌊", style: waveStyle),
-              onPressed: () => provider.fetchQuote(),
-            ),
+          TextButton(
+            child: Text("🌊", style: waveStyle),
+            onPressed: () => provider.fetchQuote(),
+          ),
+          SizedBox(
+            height: 8,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18),
