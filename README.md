@@ -15,8 +15,7 @@ A Flutter app that shows a random quote from Kanye West 🌊
 ## Attribution
 
 - **Rest API**: https://kanye.rest – "A free REST API for random Kanye West quotes (Kanye as a Service)"
-- **State managemets/Architecture** – [provider](https://pub.dev/packages/provider)
-- **Dependency injection (service locator)** – [get_it](https://pub.dev/packages/get_it)
+- **State managemet** – [provider](https://pub.dev/packages/provider)
 - **Networking** – [http](https://pub.dev/packages/http)
 - **Font** – [Knewave](https://fonts.google.com/specimen/Knewave) on Google Fonts (and [google_fonts](https://pub.dev/packages/google_fonts) library for using it)
 - **Toast (pop-up message)** – [fluttertoast](https://pub.dev/packages/fluttertoast)
